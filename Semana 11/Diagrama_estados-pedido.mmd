@@ -1,0 +1,46 @@
+stateDiagram-v2
+direction LR
+    
+    [*] --> pedidoCriado
+
+    pedidoCriado --> pedidoAceito: Pagamento aprovado
+
+    pedidoCriado --> pedidoRecusado: Recusado pelo estabelecimento
+
+    pedidoRecusado --> pedidoCancelado
+
+    pedidoAceito --> emPreparacao
+    
+    emPreparacao --> pedidoCancelado: Cliente Cancelou
+
+    emPreparacao --> pedidoPronto
+
+    emPreparacao --> pedidoAtrasado
+
+    pedidoAtrasado --> pedidoCancelado: Cliente Cancelou
+
+    pedidoAceito --> pedidoCancelado: Cliente Cancelou
+
+    pedidoPronto --> aguardandoMotoboy
+
+    pedidoPronto --> aguardandoRetirada
+
+    aguardandoRetirada --> pedidoEntregue
+
+    aguardandoMotoboy --> emRota
+    
+    emRota --> pedidoEntregue
+
+    pedidoEntregue --> pedidoFinalizado
+
+    pedidoFinalizado --> [*]
+
+    pedidoCancelado --> pedidoFinalizado
+
+    
+
+
+
+    
+
+    
